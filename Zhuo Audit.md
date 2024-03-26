@@ -1,9 +1,12 @@
 __Commit Hash__: `2f8c9d07dac4c849af66d3957f65cb871e815222` 
 __Criterion__: [Immunefi Vulnerability Severity Classification System](https://immunefi.com/immunefi-vulnerability-severity-classification-system-v2-3/)
 
-###Description
-Audit is done by Zhuo Zhang | izhuer.eth. PostDoc, Ph.D. in Computer Science @PurdueCS. Currently working at Offside Lab security company.
- 
+### Description
+***The audit is done by Zhuo Zhang | izhuer.eth. PostDoc, Ph.D. in Computer Science @PurdueCS. Currently working at Offside Lab security company. This is the first audit of Namespace contracts done for the V1 version of the platform. Date of the Audit: July 21, 2023.***
+
+### Revised
+***Disclaimer: The namespace contract and the entire platform have grown and changed significantly since this audit was done.***
+
 ## Gas/Code Optimization
 
 + Function `ReservedRegistry.getVersions` is redundant, since `ReservedRegistry.versions` is _public_.
@@ -64,8 +67,11 @@ __Remedy Suggestion__: To counter this, when adding or updating the prices, the 
 
 None
 
-
 ## Critical Issues
+
+### Revised
+
+_After careful examination, it's been established that the Subname front-running between Buyers and Node Owners is not a critical bug posing any threat to safety. It was designed like this by the Namespace team to improve user experience and cut down the registration time without having to wait for the commitment transaction in order to register a Subname. The commit and reveal mechanism mentioned below as a remedy for this issue was initially implemented by the Namespace team but removed after realizing it would significantly impact the user retention rate and overall usability of the platform with almost no security vulnerabilities for users losing funds or assets._
 
 ### [C1] Potential for Front-Running Between Buyers and Node Owners
 
